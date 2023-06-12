@@ -9,6 +9,8 @@ import Profile from "./screens/Profile";
 import Home from "./screens/Home";
 import RateApp from "./screens/RateApp";
 import SignOut from "./screens/SignOut";
+import LoginScreen from "./screens/LoginScreen";
+import 'react-native-gesture-handler';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,7 +30,10 @@ const CustomDrawerContent = (props) => {
 export default function App() {
   return (
     <NavigationContainer>
+      <Stack.Navigator>
+       <Stack.Screen name = "Login" component = {LoginScreen} options={{headerShown: false}}/></Stack.Navigator>
       <Drawer.Navigator
+     
         drawerContent={CustomDrawerContent}
         drawerStyle={styles.drawerStyle}
         screenOptions={{

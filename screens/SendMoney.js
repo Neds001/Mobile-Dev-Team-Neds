@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-
+import { addDoc, collection, setDoc,doc,updateDoc } from 'firebase/firestore'; 
+import {auth} from '../firebase'
+import {store} from '../firebase'
 
 const SendMoney = ({ currentBalance, updateCurrentBalance }) => {
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState('');
 
-  const handleSendMoney = () => {
+  function handleSendMoney () {
     if (recipient.trim() === '' || amount.trim() === '') {
       alert('Please enter a recipient and amount');
+    
+      
       return;
     }
 
@@ -30,7 +34,11 @@ const SendMoney = ({ currentBalance, updateCurrentBalance }) => {
     updateCurrentBalance(parsedAmount);
 
     alert(`Successfully sent ₱${amount} to ${recipient}`);
-
+    addDoc(collection(store, "Balance"), {
+      email: auth.currentUser?.email,
+      uid: auth.currentUser?.uid,
+      currentBalance: currentBalance-updateCurrentBalance,
+     });
     setRecipient('');
     setAmount('');
   };
