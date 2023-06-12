@@ -67,7 +67,7 @@ export default function App() {
             drawerIcon: ({ color, size }) => <MaterialCommunityIcons name="face-man-profile" size={size} color={color} />,
           }}
         />
-      {/*  <Drawer.Screen name="SendMoney" component={SendMoney} options={{drawerLabel: "Send Money",drawerIcon: ({ color, size }) => <MaterialIcons name="send" size={size} color={color} />,}}/> */}
+     
           
         <Drawer.Screen
           name="RateApp"
