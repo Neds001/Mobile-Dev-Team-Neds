@@ -11,6 +11,7 @@ import RateApp from "./screens/RateApp";
 import SignOut from "./screens/SignOut";
 import LoginScreen from "./screens/LoginScreen";
 import 'react-native-gesture-handler';
+import HomeScreen from "./screens/HomeScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -30,8 +31,7 @@ const CustomDrawerContent = (props) => {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-       <Stack.Screen name = "Login" component = {LoginScreen} options={{headerShown: false}}/></Stack.Navigator>
+     
       <Drawer.Navigator
      
         drawerContent={CustomDrawerContent}
@@ -43,6 +43,14 @@ export default function App() {
           drawerLabelStyle: styles.drawerLabelStyle,
         }}
       >
+        <Drawer.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{
+            drawerLabel: "Login",
+            drawerIcon: ({ color, size }) => <SimpleLineIcons name="Login" size={size} color={color} />,
+          }}
+        />
         <Drawer.Screen
           name="Home"
           component={Home}
@@ -75,6 +83,14 @@ export default function App() {
           options={{
             drawerLabel: "Sign Out",
             drawerIcon: ({ color, size }) => <MaterialIcons name="logout" size={size} color={color} />,
+          }}
+        />
+        <Drawer.Screen
+          name="sign out"
+          component={HomeScreen}
+          options={{
+            drawerLabel: "Sign out",
+            drawerIcon: ({ color, size }) => <SimpleLineIcons name="signout" size={size} color={color} />,
           }}
         />
       </Drawer.Navigator>
